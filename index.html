@@ -1,0 +1,3228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AmazonClone - Your One-Stop Shopping Destination</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<style>
+    :root {
+  /* Primitive Color Tokens */
+  --color-white: rgba(255, 255, 255, 1);
+  --color-black: rgba(0, 0, 0, 1);
+  --color-cream-50: rgba(252, 252, 249, 1);
+  --color-cream-100: rgba(255, 255, 253, 1);
+  --color-gray-200: rgba(245, 245, 245, 1);
+  --color-gray-300: rgba(167, 169, 169, 1);
+  --color-gray-400: rgba(119, 124, 124, 1);
+  --color-slate-500: rgba(98, 108, 113, 1);
+  --color-brown-600: rgba(94, 82, 64, 1);
+  --color-charcoal-700: rgba(31, 33, 33, 1);
+  --color-charcoal-800: rgba(38, 40, 40, 1);
+  --color-slate-900: rgba(19, 52, 59, 1);
+  --color-teal-300: rgba(50, 184, 198, 1);
+  --color-teal-400: rgba(45, 166, 178, 1);
+  --color-teal-500: rgba(33, 128, 141, 1);
+  --color-teal-600: rgba(29, 116, 128, 1);
+  --color-teal-700: rgba(26, 104, 115, 1);
+  --color-teal-800: rgba(41, 150, 161, 1);
+  --color-red-400: rgba(255, 84, 89, 1);
+  --color-red-500: rgba(192, 21, 47, 1);
+  --color-orange-400: rgba(230, 129, 97, 1);
+  --color-orange-500: rgba(168, 75, 47, 1);
+
+  /* RGB versions for opacity control */
+  --color-brown-600-rgb: 94, 82, 64;
+  --color-teal-500-rgb: 33, 128, 141;
+  --color-slate-900-rgb: 19, 52, 59;
+  --color-slate-500-rgb: 98, 108, 113;
+  --color-red-500-rgb: 192, 21, 47;
+  --color-red-400-rgb: 255, 84, 89;
+  --color-orange-500-rgb: 168, 75, 47;
+  --color-orange-400-rgb: 230, 129, 97;
+
+  /* Background color tokens (Light Mode) */
+  --color-bg-1: rgba(59, 130, 246, 0.08); /* Light blue */
+  --color-bg-2: rgba(245, 158, 11, 0.08); /* Light yellow */
+  --color-bg-3: rgba(34, 197, 94, 0.08); /* Light green */
+  --color-bg-4: rgba(239, 68, 68, 0.08); /* Light red */
+  --color-bg-5: rgba(147, 51, 234, 0.08); /* Light purple */
+  --color-bg-6: rgba(249, 115, 22, 0.08); /* Light orange */
+  --color-bg-7: rgba(236, 72, 153, 0.08); /* Light pink */
+  --color-bg-8: rgba(6, 182, 212, 0.08); /* Light cyan */
+
+  /* Semantic Color Tokens (Light Mode) */
+  --color-background: var(--color-cream-50);
+  --color-surface: var(--color-cream-100);
+  --color-text: var(--color-slate-900);
+  --color-text-secondary: var(--color-slate-500);
+  --color-primary: var(--color-teal-500);
+  --color-primary-hover: var(--color-teal-600);
+  --color-primary-active: var(--color-teal-700);
+  --color-secondary: rgba(var(--color-brown-600-rgb), 0.12);
+  --color-secondary-hover: rgba(var(--color-brown-600-rgb), 0.2);
+  --color-secondary-active: rgba(var(--color-brown-600-rgb), 0.25);
+  --color-border: rgba(var(--color-brown-600-rgb), 0.2);
+  --color-btn-primary-text: var(--color-cream-50);
+  --color-card-border: rgba(var(--color-brown-600-rgb), 0.12);
+  --color-card-border-inner: rgba(var(--color-brown-600-rgb), 0.12);
+  --color-error: var(--color-red-500);
+  --color-success: var(--color-teal-500);
+  --color-warning: var(--color-orange-500);
+  --color-info: var(--color-slate-500);
+  --color-focus-ring: rgba(var(--color-teal-500-rgb), 0.4);
+  --color-select-caret: rgba(var(--color-slate-900-rgb), 0.8);
+
+  /* Common style patterns */
+  --focus-ring: 0 0 0 3px var(--color-focus-ring);
+  --focus-outline: 2px solid var(--color-primary);
+  --status-bg-opacity: 0.15;
+  --status-border-opacity: 0.25;
+  --select-caret-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23134252' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  --select-caret-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23f5f5f5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+
+  /* RGB versions for opacity control */
+  --color-success-rgb: 33, 128, 141;
+  --color-error-rgb: 192, 21, 47;
+  --color-warning-rgb: 168, 75, 47;
+  --color-info-rgb: 98, 108, 113;
+
+  /* Typography */
+  --font-family-base: "FKGroteskNeue", "Geist", "Inter", -apple-system,
+    BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-family-mono: "Berkeley Mono", ui-monospace, SFMono-Regular, Menlo,
+    Monaco, Consolas, monospace;
+  --font-size-xs: 11px;
+  --font-size-sm: 12px;
+  --font-size-base: 14px;
+  --font-size-md: 14px;
+  --font-size-lg: 16px;
+  --font-size-xl: 18px;
+  --font-size-2xl: 20px;
+  --font-size-3xl: 24px;
+  --font-size-4xl: 30px;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 550;
+  --font-weight-bold: 600;
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --letter-spacing-tight: -0.01em;
+
+  /* Spacing */
+  --space-0: 0;
+  --space-1: 1px;
+  --space-2: 2px;
+  --space-4: 4px;
+  --space-6: 6px;
+  --space-8: 8px;
+  --space-10: 10px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-20: 20px;
+  --space-24: 24px;
+  --space-32: 32px;
+
+  /* Border Radius */
+  --radius-sm: 6px;
+  --radius-base: 8px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.02);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.04),
+    0 2px 4px -1px rgba(0, 0, 0, 0.02);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.04),
+    0 4px 6px -2px rgba(0, 0, 0, 0.02);
+  --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.03);
+
+  /* Animation */
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --ease-standard: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Layout */
+  --container-sm: 640px;
+  --container-md: 768px;
+  --container-lg: 1024px;
+  --container-xl: 1280px;
+}
+
+/* Dark mode colors */
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* RGB versions for opacity control (Dark Mode) */
+    --color-gray-400-rgb: 119, 124, 124;
+    --color-teal-300-rgb: 50, 184, 198;
+    --color-gray-300-rgb: 167, 169, 169;
+    --color-gray-200-rgb: 245, 245, 245;
+
+    /* Background color tokens (Dark Mode) */
+    --color-bg-1: rgba(29, 78, 216, 0.15); /* Dark blue */
+    --color-bg-2: rgba(180, 83, 9, 0.15); /* Dark yellow */
+    --color-bg-3: rgba(21, 128, 61, 0.15); /* Dark green */
+    --color-bg-4: rgba(185, 28, 28, 0.15); /* Dark red */
+    --color-bg-5: rgba(107, 33, 168, 0.15); /* Dark purple */
+    --color-bg-6: rgba(194, 65, 12, 0.15); /* Dark orange */
+    --color-bg-7: rgba(190, 24, 93, 0.15); /* Dark pink */
+    --color-bg-8: rgba(8, 145, 178, 0.15); /* Dark cyan */
+
+    /* Semantic Color Tokens (Dark Mode) */
+    --color-background: var(--color-charcoal-700);
+    --color-surface: var(--color-charcoal-800);
+    --color-text: var(--color-gray-200);
+    --color-text-secondary: rgba(var(--color-gray-300-rgb), 0.7);
+    --color-primary: var(--color-teal-300);
+    --color-primary-hover: var(--color-teal-400);
+    --color-primary-active: var(--color-teal-800);
+    --color-secondary: rgba(var(--color-gray-400-rgb), 0.15);
+    --color-secondary-hover: rgba(var(--color-gray-400-rgb), 0.25);
+    --color-secondary-active: rgba(var(--color-gray-400-rgb), 0.3);
+    --color-border: rgba(var(--color-gray-400-rgb), 0.3);
+    --color-error: var(--color-red-400);
+    --color-success: var(--color-teal-300);
+    --color-warning: var(--color-orange-400);
+    --color-info: var(--color-gray-300);
+    --color-focus-ring: rgba(var(--color-teal-300-rgb), 0.4);
+    --color-btn-primary-text: var(--color-slate-900);
+    --color-card-border: rgba(var(--color-gray-400-rgb), 0.2);
+    --color-card-border-inner: rgba(var(--color-gray-400-rgb), 0.15);
+    --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.1),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+    --button-border-secondary: rgba(var(--color-gray-400-rgb), 0.2);
+    --color-border-secondary: rgba(var(--color-gray-400-rgb), 0.2);
+    --color-select-caret: rgba(var(--color-gray-200-rgb), 0.8);
+
+    /* Common style patterns - updated for dark mode */
+    --focus-ring: 0 0 0 3px var(--color-focus-ring);
+    --focus-outline: 2px solid var(--color-primary);
+    --status-bg-opacity: 0.15;
+    --status-border-opacity: 0.25;
+    --select-caret-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23134252' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    --select-caret-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23f5f5f5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+
+    /* RGB versions for dark mode */
+    --color-success-rgb: var(--color-teal-300-rgb);
+    --color-error-rgb: var(--color-red-400-rgb);
+    --color-warning-rgb: var(--color-orange-400-rgb);
+    --color-info-rgb: var(--color-gray-300-rgb);
+  }
+}
+
+/* Data attribute for manual theme switching */
+[data-color-scheme="dark"] {
+  /* RGB versions for opacity control (dark mode) */
+  --color-gray-400-rgb: 119, 124, 124;
+  --color-teal-300-rgb: 50, 184, 198;
+  --color-gray-300-rgb: 167, 169, 169;
+  --color-gray-200-rgb: 245, 245, 245;
+
+  /* Colorful background palette - Dark Mode */
+  --color-bg-1: rgba(29, 78, 216, 0.15); /* Dark blue */
+  --color-bg-2: rgba(180, 83, 9, 0.15); /* Dark yellow */
+  --color-bg-3: rgba(21, 128, 61, 0.15); /* Dark green */
+  --color-bg-4: rgba(185, 28, 28, 0.15); /* Dark red */
+  --color-bg-5: rgba(107, 33, 168, 0.15); /* Dark purple */
+  --color-bg-6: rgba(194, 65, 12, 0.15); /* Dark orange */
+  --color-bg-7: rgba(190, 24, 93, 0.15); /* Dark pink */
+  --color-bg-8: rgba(8, 145, 178, 0.15); /* Dark cyan */
+
+  /* Semantic Color Tokens (Dark Mode) */
+  --color-background: var(--color-charcoal-700);
+  --color-surface: var(--color-charcoal-800);
+  --color-text: var(--color-gray-200);
+  --color-text-secondary: rgba(var(--color-gray-300-rgb), 0.7);
+  --color-primary: var(--color-teal-300);
+  --color-primary-hover: var(--color-teal-400);
+  --color-primary-active: var(--color-teal-800);
+  --color-secondary: rgba(var(--color-gray-400-rgb), 0.15);
+  --color-secondary-hover: rgba(var(--color-gray-400-rgb), 0.25);
+  --color-secondary-active: rgba(var(--color-gray-400-rgb), 0.3);
+  --color-border: rgba(var(--color-gray-400-rgb), 0.3);
+  --color-error: var(--color-red-400);
+  --color-success: var(--color-teal-300);
+  --color-warning: var(--color-orange-400);
+  --color-info: var(--color-gray-300);
+  --color-focus-ring: rgba(var(--color-teal-300-rgb), 0.4);
+  --color-btn-primary-text: var(--color-slate-900);
+  --color-card-border: rgba(var(--color-gray-400-rgb), 0.15);
+  --color-card-border-inner: rgba(var(--color-gray-400-rgb), 0.15);
+  --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+  --color-border-secondary: rgba(var(--color-gray-400-rgb), 0.2);
+  --color-select-caret: rgba(var(--color-gray-200-rgb), 0.8);
+
+  /* Common style patterns - updated for dark mode */
+  --focus-ring: 0 0 0 3px var(--color-focus-ring);
+  --focus-outline: 2px solid var(--color-primary);
+  --status-bg-opacity: 0.15;
+  --status-border-opacity: 0.25;
+  --select-caret-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23134252' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  --select-caret-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23f5f5f5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+
+  /* RGB versions for dark mode */
+  --color-success-rgb: var(--color-teal-300-rgb);
+  --color-error-rgb: var(--color-red-400-rgb);
+  --color-warning-rgb: var(--color-orange-400-rgb);
+  --color-info-rgb: var(--color-gray-300-rgb);
+}
+
+[data-color-scheme="light"] {
+  /* RGB versions for opacity control (light mode) */
+  --color-brown-600-rgb: 94, 82, 64;
+  --color-teal-500-rgb: 33, 128, 141;
+  --color-slate-900-rgb: 19, 52, 59;
+
+  /* Semantic Color Tokens (Light Mode) */
+  --color-background: var(--color-cream-50);
+  --color-surface: var(--color-cream-100);
+  --color-text: var(--color-slate-900);
+  --color-text-secondary: var(--color-slate-500);
+  --color-primary: var(--color-teal-500);
+  --color-primary-hover: var(--color-teal-600);
+  --color-primary-active: var(--color-teal-700);
+  --color-secondary: rgba(var(--color-brown-600-rgb), 0.12);
+  --color-secondary-hover: rgba(var(--color-brown-600-rgb), 0.2);
+  --color-secondary-active: rgba(var(--color-brown-600-rgb), 0.25);
+  --color-border: rgba(var(--color-brown-600-rgb), 0.2);
+  --color-btn-primary-text: var(--color-cream-50);
+  --color-card-border: rgba(var(--color-brown-600-rgb), 0.12);
+  --color-card-border-inner: rgba(var(--color-brown-600-rgb), 0.12);
+  --color-error: var(--color-red-500);
+  --color-success: var(--color-teal-500);
+  --color-warning: var(--color-orange-500);
+  --color-info: var(--color-slate-500);
+  --color-focus-ring: rgba(var(--color-teal-500-rgb), 0.4);
+
+  /* RGB versions for light mode */
+  --color-success-rgb: var(--color-teal-500-rgb);
+  --color-error-rgb: var(--color-red-500-rgb);
+  --color-warning-rgb: var(--color-orange-500-rgb);
+  --color-info-rgb: var(--color-slate-500-rgb);
+}
+
+/* Base styles */
+html {
+  font-size: var(--font-size-base);
+  font-family: var(--font-family-base);
+  line-height: var(--line-height-normal);
+  color: var(--color-text);
+  background-color: var(--color-background);
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+/* Typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-tight);
+  color: var(--color-text);
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+h1 {
+  font-size: var(--font-size-4xl);
+}
+h2 {
+  font-size: var(--font-size-3xl);
+}
+h3 {
+  font-size: var(--font-size-2xl);
+}
+h4 {
+  font-size: var(--font-size-xl);
+}
+h5 {
+  font-size: var(--font-size-lg);
+}
+h6 {
+  font-size: var(--font-size-md);
+}
+
+p {
+  margin: 0 0 var(--space-16) 0;
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-standard);
+}
+
+a:hover {
+  color: var(--color-primary-hover);
+}
+
+code,
+pre {
+  font-family: var(--font-family-mono);
+  font-size: calc(var(--font-size-base) * 0.95);
+  background-color: var(--color-secondary);
+  border-radius: var(--radius-sm);
+}
+
+code {
+  padding: var(--space-1) var(--space-4);
+}
+
+pre {
+  padding: var(--space-16);
+  margin: var(--space-16) 0;
+  overflow: auto;
+  border: 1px solid var(--color-border);
+}
+
+pre code {
+  background: none;
+  padding: 0;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-8) var(--space-16);
+  border-radius: var(--radius-base);
+  font-size: var(--font-size-base);
+  font-weight: 500;
+  line-height: 1.5;
+  cursor: pointer;
+  transition: all var(--duration-normal) var(--ease-standard);
+  border: none;
+  text-decoration: none;
+  position: relative;
+}
+
+.btn:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+.btn--primary {
+  background: var(--color-primary);
+  color: var(--color-btn-primary-text);
+}
+
+.btn--primary:hover {
+  background: var(--color-primary-hover);
+}
+
+.btn--primary:active {
+  background: var(--color-primary-active);
+}
+
+.btn--secondary {
+  background: var(--color-secondary);
+  color: var(--color-text);
+}
+
+.btn--secondary:hover {
+  background: var(--color-secondary-hover);
+}
+
+.btn--secondary:active {
+  background: var(--color-secondary-active);
+}
+
+.btn--outline {
+  background: transparent;
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+}
+
+.btn--outline:hover {
+  background: var(--color-secondary);
+}
+
+.btn--sm {
+  padding: var(--space-4) var(--space-12);
+  font-size: var(--font-size-sm);
+  border-radius: var(--radius-sm);
+}
+
+.btn--lg {
+  padding: var(--space-10) var(--space-20);
+  font-size: var(--font-size-lg);
+  border-radius: var(--radius-md);
+}
+
+.btn--full-width {
+  width: 100%;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Form elements */
+.form-control {
+  display: block;
+  width: 100%;
+  padding: var(--space-8) var(--space-12);
+  font-size: var(--font-size-md);
+  line-height: 1.5;
+  color: var(--color-text);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-base);
+  transition: border-color var(--duration-fast) var(--ease-standard),
+    box-shadow var(--duration-fast) var(--ease-standard);
+}
+
+textarea.form-control {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+}
+
+select.form-control {
+  padding: var(--space-8) var(--space-12);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: var(--select-caret-light);
+  background-repeat: no-repeat;
+  background-position: right var(--space-12) center;
+  background-size: 16px;
+  padding-right: var(--space-32);
+}
+
+/* Add a dark mode specific caret */
+@media (prefers-color-scheme: dark) {
+  select.form-control {
+    background-image: var(--select-caret-dark);
+  }
+}
+
+/* Also handle data-color-scheme */
+[data-color-scheme="dark"] select.form-control {
+  background-image: var(--select-caret-dark);
+}
+
+[data-color-scheme="light"] select.form-control {
+  background-image: var(--select-caret-light);
+}
+
+.form-control:focus {
+  border-color: var(--color-primary);
+  outline: var(--focus-outline);
+}
+
+.form-label {
+  display: block;
+  margin-bottom: var(--space-8);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-sm);
+}
+
+.form-group {
+  margin-bottom: var(--space-16);
+}
+
+/* Card component */
+.card {
+  background-color: var(--color-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-card-border);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: box-shadow var(--duration-normal) var(--ease-standard);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.card__body {
+  padding: var(--space-16);
+}
+
+.card__header,
+.card__footer {
+  padding: var(--space-16);
+  border-bottom: 1px solid var(--color-card-border-inner);
+}
+
+/* Status indicators - simplified with CSS variables */
+.status {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-6) var(--space-12);
+  border-radius: var(--radius-full);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-sm);
+}
+
+.status--success {
+  background-color: rgba(
+    var(--color-success-rgb, 33, 128, 141),
+    var(--status-bg-opacity)
+  );
+  color: var(--color-success);
+  border: 1px solid
+    rgba(var(--color-success-rgb, 33, 128, 141), var(--status-border-opacity));
+}
+
+.status--error {
+  background-color: rgba(
+    var(--color-error-rgb, 192, 21, 47),
+    var(--status-bg-opacity)
+  );
+  color: var(--color-error);
+  border: 1px solid
+    rgba(var(--color-error-rgb, 192, 21, 47), var(--status-border-opacity));
+}
+
+.status--warning {
+  background-color: rgba(
+    var(--color-warning-rgb, 168, 75, 47),
+    var(--status-bg-opacity)
+  );
+  color: var(--color-warning);
+  border: 1px solid
+    rgba(var(--color-warning-rgb, 168, 75, 47), var(--status-border-opacity));
+}
+
+.status--info {
+  background-color: rgba(
+    var(--color-info-rgb, 98, 108, 113),
+    var(--status-bg-opacity)
+  );
+  color: var(--color-info);
+  border: 1px solid
+    rgba(var(--color-info-rgb, 98, 108, 113), var(--status-border-opacity));
+}
+
+/* Container layout */
+.container {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: var(--space-16);
+  padding-left: var(--space-16);
+}
+
+@media (min-width: 640px) {
+  .container {
+    max-width: var(--container-sm);
+  }
+}
+@media (min-width: 768px) {
+  .container {
+    max-width: var(--container-md);
+  }
+}
+@media (min-width: 1024px) {
+  .container {
+    max-width: var(--container-lg);
+  }
+}
+@media (min-width: 1280px) {
+  .container {
+    max-width: var(--container-xl);
+  }
+}
+
+/* Utility classes */
+.flex {
+  display: flex;
+}
+.flex-col {
+  flex-direction: column;
+}
+.items-center {
+  align-items: center;
+}
+.justify-center {
+  justify-content: center;
+}
+.justify-between {
+  justify-content: space-between;
+}
+.gap-4 {
+  gap: var(--space-4);
+}
+.gap-8 {
+  gap: var(--space-8);
+}
+.gap-16 {
+  gap: var(--space-16);
+}
+
+.m-0 {
+  margin: 0;
+}
+.mt-8 {
+  margin-top: var(--space-8);
+}
+.mb-8 {
+  margin-bottom: var(--space-8);
+}
+.mx-8 {
+  margin-left: var(--space-8);
+  margin-right: var(--space-8);
+}
+.my-8 {
+  margin-top: var(--space-8);
+  margin-bottom: var(--space-8);
+}
+
+.p-0 {
+  padding: 0;
+}
+.py-8 {
+  padding-top: var(--space-8);
+  padding-bottom: var(--space-8);
+}
+.px-8 {
+  padding-left: var(--space-8);
+  padding-right: var(--space-8);
+}
+.py-16 {
+  padding-top: var(--space-16);
+  padding-bottom: var(--space-16);
+}
+.px-16 {
+  padding-left: var(--space-16);
+  padding-right: var(--space-16);
+}
+
+.block {
+  display: block;
+}
+.hidden {
+  display: none;
+}
+
+/* Accessibility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+:focus-visible {
+  outline: var(--focus-outline);
+  outline-offset: 2px;
+}
+
+/* Dark mode specifics */
+[data-color-scheme="dark"] .btn--outline {
+  border: 1px solid var(--color-border-secondary);
+}
+
+@font-face {
+  font-family: 'FKGroteskNeue';
+  src: url('https://r2cdn.perplexity.ai/fonts/FKGroteskNeue.woff2')
+    format('woff2');
+}
+
+/* END PERPLEXITY DESIGN SYSTEM */
+/* Custom Amazon-style colors */
+:root {
+  --amazon-orange: #FF9900;
+  --amazon-orange-hover: #e88900;
+  --amazon-blue: #232F3E;
+  --amazon-light-blue: #37475A;
+  --amazon-dark: #131921;
+  --amazon-light-gray: #f3f3f3;
+  --amazon-border: #ddd;
+}
+
+/* Header Styles */
+.header {
+  background-color: var(--amazon-dark);
+  color: var(--color-white);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: var(--shadow-md);
+}
+
+.header-container {
+  max-width: var(--container-xl);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: var(--space-16);
+  padding: var(--space-8) var(--space-16);
+}
+
+.logo {
+  display: flex;
+  align-items: baseline;
+  cursor: pointer;
+  transition: opacity var(--duration-fast) var(--ease-standard);
+}
+
+.logo:hover {
+  opacity: 0.8;
+}
+
+.logo h1 {
+  color: var(--color-white);
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  margin: 0;
+}
+
+.logo-tagline {
+  color: var(--amazon-orange);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-normal);
+  margin-left: var(--space-2);
+}
+
+.delivery-location {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  cursor: pointer;
+  padding: var(--space-4) var(--space-8);
+  border-radius: var(--radius-sm);
+  transition: background-color var(--duration-fast) var(--ease-standard);
+}
+
+.delivery-location:hover {
+  background-color: var(--amazon-light-blue);
+}
+
+.delivery-location svg {
+  color: var(--color-white);
+}
+
+.delivery-location > div {
+  display: flex;
+  flex-direction: column;
+  font-size: var(--font-size-xs);
+  line-height: 1.2;
+}
+
+.deliver-to {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.search-section {
+  flex: 1;
+  display: flex;
+  max-width: 600px;
+  margin: 0 auto;
+  box-shadow: var(--shadow-sm);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.search-category {
+  background: var(--color-gray-200);
+  border: none;
+  padding: var(--space-10) var(--space-12);
+  font-size: var(--font-size-sm);
+  min-width: 140px;
+  cursor: pointer;
+  color: var(--color-text);
+}
+
+.search-input {
+  flex: 1;
+  border: none;
+  padding: var(--space-10) var(--space-12);
+  font-size: var(--font-size-base);
+  outline: none;
+  background: var(--color-white);
+}
+
+.search-btn {
+  background: var(--amazon-orange);
+  border: none;
+  padding: var(--space-10) var(--space-16);
+  cursor: pointer;
+  color: var(--color-white);
+  transition: background-color var(--duration-fast) var(--ease-standard);
+}
+
+.search-btn:hover {
+  background: var(--amazon-orange-hover);
+}
+
+.user-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-16);
+}
+
+.language-selector {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  cursor: pointer;
+  padding: var(--space-4) var(--space-8);
+  border-radius: var(--radius-sm);
+  transition: background-color var(--duration-fast) var(--ease-standard);
+}
+
+.language-selector:hover {
+  background-color: var(--amazon-light-blue);
+}
+
+.account, .orders {
+  display: flex;
+  flex-direction: column;
+  font-size: var(--font-size-xs);
+  cursor: pointer;
+  padding: var(--space-4) var(--space-8);
+  border-radius: var(--radius-sm);
+  transition: background-color var(--duration-fast) var(--ease-standard);
+}
+
+.account:hover, .orders:hover {
+  background-color: var(--amazon-light-blue);
+}
+
+.account span, .orders span {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.cart {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  cursor: pointer;
+  position: relative;
+  padding: var(--space-4) var(--space-8);
+  border-radius: var(--radius-sm);
+  transition: background-color var(--duration-fast) var(--ease-standard);
+}
+
+.cart:hover {
+  background-color: var(--amazon-light-blue);
+}
+
+.cart-count {
+  position: absolute;
+  top: 0;
+  right: 24px;
+  background: var(--amazon-orange);
+  color: var(--color-white);
+  border-radius: var(--radius-full);
+  min-width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+}
+
+/* Navigation */
+.nav {
+  background-color: var(--amazon-blue);
+  border-top: 1px solid var(--amazon-light-blue);
+}
+
+.nav-container {
+  max-width: var(--container-xl);
+  margin: 0 auto;
+  display: flex;
+  gap: var(--space-20);
+  padding: var(--space-6) var(--space-16);
+  align-items: center;
+}
+
+.nav-menu-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  background: none;
+  border: 1px solid var(--amazon-light-blue);
+  color: var(--color-white);
+  padding: var(--space-4) var(--space-8);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: var(--font-size-sm);
+  transition: background-color var(--duration-fast) var(--ease-standard);
+}
+
+.nav-menu-btn:hover {
+  background-color: var(--amazon-light-blue);
+}
+
+.nav-link {
+  color: var(--color-white);
+  text-decoration: none;
+  font-size: var(--font-size-sm);
+  padding: var(--space-6) var(--space-8);
+  border-radius: var(--radius-sm);
+  transition: background-color var(--duration-fast) var(--ease-standard);
+}
+
+.nav-link:hover {
+  background-color: var(--amazon-light-blue);
+  color: var(--color-white);
+}
+
+/* Breadcrumbs */
+.breadcrumbs {
+  background: var(--amazon-light-gray);
+  padding: var(--space-8) 0;
+  font-size: var(--font-size-sm);
+  border-bottom: 1px solid var(--amazon-border);
+}
+
+.breadcrumbs .container {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+.breadcrumb-link {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.breadcrumb-link:hover {
+  text-decoration: underline;
+}
+
+.breadcrumb-separator {
+  color: var(--color-text-secondary);
+}
+
+/* Main Content */
+.main-content {
+  min-height: 60vh;
+  padding: var(--space-16) 0;
+}
+
+/* Page Layouts */
+.page-container {
+  max-width: var(--container-xl);
+  margin: 0 auto;
+  padding: 0 var(--space-16);
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: var(--space-32);
+}
+
+.page-header h1 {
+  margin-bottom: var(--space-16);
+  color: var(--color-text);
+}
+
+.page-header p {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-lg);
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  height: 400px;
+  overflow: hidden;
+  margin-bottom: var(--space-32);
+}
+
+.hero-slider {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.hero-slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity var(--duration-normal) var(--ease-standard);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-slide.active {
+  opacity: 1;
+}
+
+.hero-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.7);
+}
+
+.hero-content {
+  position: absolute;
+  text-align: center;
+  color: var(--color-white);
+  z-index: 2;
+}
+
+.hero-content h2 {
+  font-size: var(--font-size-4xl);
+  margin-bottom: var(--space-16);
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.hero-content p {
+  font-size: var(--font-size-xl);
+  margin-bottom: var(--space-24);
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.hero-indicators {
+  position: absolute;
+  bottom: var(--space-20);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: var(--space-8);
+  z-index: 3;
+}
+
+.hero-indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: var(--radius-full);
+  border: 2px solid var(--color-white);
+  background: transparent;
+  cursor: pointer;
+  transition: background-color var(--duration-fast) var(--ease-standard);
+}
+
+.hero-indicator.active {
+  background: var(--amazon-orange);
+  border-color: var(--amazon-orange);
+}
+
+/* Categories Grid */
+.categories-section {
+  padding: var(--space-32) 0;
+  background-color: var(--color-bg-1);
+}
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-24);
+}
+
+.category-card {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--duration-normal) var(--ease-standard), box-shadow var(--duration-normal) var(--ease-standard);
+  cursor: pointer;
+}
+
+.category-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.category-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.category-info {
+  padding: var(--space-16);
+}
+
+.category-info h3 {
+  font-size: var(--font-size-xl);
+  margin-bottom: var(--space-8);
+  color: var(--color-text);
+}
+
+.category-info p {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  margin: 0;
+}
+
+/* Products Grid */
+.products-section {
+  padding: var(--space-32) 0;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-24);
+}
+
+.product-card {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--duration-normal) var(--ease-standard), box-shadow var(--duration-normal) var(--ease-standard);
+  position: relative;
+  cursor: pointer;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.product-card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+.product-info {
+  padding: var(--space-16);
+}
+
+.product-info h3 {
+  font-size: var(--font-size-lg);
+  margin-bottom: var(--space-8);
+  color: var(--color-text);
+  line-height: var(--line-height-tight);
+}
+
+.product-rating {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  margin-bottom: var(--space-8);
+}
+
+.stars {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.star {
+  color: var(--amazon-orange);
+  font-size: var(--font-size-sm);
+}
+
+.star.empty {
+  color: var(--color-border);
+}
+
+.reviews {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+}
+
+.product-price {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  margin-bottom: var(--space-16);
+}
+
+.current-price {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text);
+}
+
+.original-price {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  text-decoration: line-through;
+}
+
+.discount {
+  background: var(--color-error);
+  color: var(--color-white);
+  padding: var(--space-2) var(--space-6);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+}
+
+.add-to-cart {
+  background: var(--amazon-orange);
+  color: var(--color-white);
+  border: none;
+  padding: var(--space-8) var(--space-16);
+  border-radius: var(--radius-base);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  width: 100%;
+  transition: background-color var(--duration-fast) var(--ease-standard);
+}
+
+.add-to-cart:hover {
+  background: var(--amazon-orange-hover);
+}
+
+/* Product Detail Page */
+.product-detail {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-32);
+  margin-bottom: var(--space-32);
+}
+
+.product-images {
+  display: flex;
+  gap: var(--space-16);
+}
+
+.product-thumbnails {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.product-thumbnail {
+  width: 60px;
+  height: 60px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border-color var(--duration-fast) var(--ease-standard);
+}
+
+.product-thumbnail.active {
+  border-color: var(--amazon-orange);
+}
+
+.product-main-image {
+  flex: 1;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.product-main-image img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+}
+
+.product-details h1 {
+  margin-bottom: var(--space-16);
+}
+
+.product-features {
+  margin: var(--space-20) 0;
+}
+
+.product-features ul {
+  list-style: none;
+  padding: 0;
+}
+
+.product-features li {
+  padding: var(--space-4) 0;
+  color: var(--color-text-secondary);
+}
+
+.product-features li::before {
+  content: "✓";
+  color: var(--amazon-orange);
+  margin-right: var(--space-8);
+  font-weight: var(--font-weight-bold);
+}
+
+/* Cart Page */
+.cart-container {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: var(--space-32);
+}
+
+.cart-items {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  padding: var(--space-24);
+}
+
+.cart-item {
+  display: flex;
+  gap: var(--space-16);
+  padding: var(--space-16) 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.cart-item:last-child {
+  border-bottom: none;
+}
+
+.cart-item img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: var(--radius-base);
+}
+
+.cart-item-details {
+  flex: 1;
+}
+
+.cart-item-actions {
+  display: flex;
+  gap: var(--space-8);
+  margin-top: var(--space-8);
+}
+
+.quantity-selector {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+}
+
+.quantity-btn {
+  background: none;
+  border: none;
+  padding: var(--space-4) var(--space-8);
+  cursor: pointer;
+  font-weight: var(--font-weight-bold);
+  transition: background-color var(--duration-fast) var(--ease-standard);
+}
+
+.quantity-btn:hover {
+  background-color: var(--color-secondary);
+}
+
+.quantity-input {
+  width: 50px;
+  text-align: center;
+  border: none;
+  padding: var(--space-4);
+}
+
+.cart-summary {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  padding: var(--space-24);
+  height: fit-content;
+  position: sticky;
+  top: 120px;
+}
+
+/* Account Pages */
+.account-container {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  gap: var(--space-32);
+}
+
+.account-sidebar {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  padding: var(--space-24);
+  height: fit-content;
+}
+
+.account-menu {
+  list-style: none;
+  padding: 0;
+}
+
+.account-menu li {
+  margin-bottom: var(--space-8);
+}
+
+.account-menu a {
+  display: block;
+  padding: var(--space-8) var(--space-12);
+  color: var(--color-text);
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+  transition: background-color var(--duration-fast) var(--ease-standard);
+}
+
+.account-menu a:hover, .account-menu a.active {
+  background-color: var(--color-bg-1);
+  color: var(--color-primary);
+}
+
+.account-content {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  padding: var(--space-24);
+}
+
+/* Forms */
+.form-section {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  padding: var(--space-24);
+  margin-bottom: var(--space-24);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-16);
+  margin-bottom: var(--space-16);
+}
+
+.form-group.full-width {
+  grid-column: 1 / -1;
+}
+
+/* Footer */
+.footer {
+  background-color: var(--amazon-blue);
+  color: var(--color-white);
+  margin-top: var(--space-32);
+}
+
+.footer-back-to-top {
+  background-color: var(--amazon-light-blue);
+  text-align: center;
+  padding: var(--space-16) 0;
+  border-top: 1px solid var(--amazon-light-blue);
+}
+
+.back-to-top-btn {
+  background: none;
+  border: none;
+  color: var(--color-white);
+  cursor: pointer;
+  font-size: var(--font-size-sm);
+  transition: opacity var(--duration-fast) var(--ease-standard);
+}
+
+.back-to-top-btn:hover {
+  opacity: 0.8;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-32);
+  padding: var(--space-32) 0;
+}
+
+.footer-column h4 {
+  color: var(--color-white);
+  margin-bottom: var(--space-16);
+  font-size: var(--font-size-lg);
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-column li {
+  margin-bottom: var(--space-8);
+}
+
+.footer-column a {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  font-size: var(--font-size-sm);
+  transition: color var(--duration-fast) var(--ease-standard);
+}
+
+.footer-column a:hover {
+  color: var(--amazon-orange);
+  text-decoration: underline;
+}
+
+.footer-divider {
+  border-top: 1px solid var(--amazon-light-blue);
+  margin: var(--space-24) 0;
+}
+
+.footer-secondary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-20) 0;
+}
+
+.footer-logo h2 {
+  color: var(--color-white);
+  margin: 0;
+}
+
+.footer-links {
+  display: flex;
+  gap: var(--space-20);
+  align-items: center;
+}
+
+.footer-language select {
+  background: var(--amazon-blue);
+  color: var(--color-white);
+  border: 1px solid var(--amazon-light-blue);
+  padding: var(--space-4) var(--space-8);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-sm);
+}
+
+.footer-currency, .footer-country {
+  font-size: var(--font-size-sm);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.footer-bottom {
+  padding: var(--space-16) 0;
+  text-align: center;
+  border-top: 1px solid var(--amazon-light-blue);
+}
+
+.footer-bottom-links {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-16);
+  margin-bottom: var(--space-16);
+  flex-wrap: wrap;
+}
+
+.footer-bottom-links a {
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  font-size: var(--font-size-sm);
+}
+
+.footer-bottom-links a:hover {
+  color: var(--amazon-orange);
+  text-decoration: underline;
+}
+
+.footer-bottom p {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: var(--font-size-sm);
+  margin: 0;
+}
+
+/* Loading Spinner */
+.loading-spinner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition: all var(--duration-normal) var(--ease-standard);
+}
+
+.loading-spinner.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--color-border);
+  border-top: 4px solid var(--amazon-orange);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Modal Updates */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  opacity: 1;
+  visibility: visible;
+  transition: all var(--duration-normal) var(--ease-standard);
+}
+
+.modal.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.modal-content {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  max-width: 500px;
+  width: 90%;
+  max-height: 80vh;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-20);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.modal-header h3 {
+  margin: 0;
+  color: var(--color-text);
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  font-size: var(--font-size-3xl);
+  cursor: pointer;
+  color: var(--color-text-secondary);
+  transition: color var(--duration-fast) var(--ease-standard);
+}
+
+.modal-close:hover {
+  color: var(--color-text);
+}
+
+.modal-body {
+  padding: var(--space-20);
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+/* Button customizations for Amazon style */
+.btn--primary {
+  background: var(--amazon-orange);
+  color: var(--color-white);
+  border: 1px solid var(--amazon-orange);
+}
+
+.btn--primary:hover {
+  background: var(--amazon-orange-hover);
+  border-color: var(--amazon-orange-hover);
+}
+
+.btn--secondary {
+  background: var(--color-white);
+  color: var(--color-text);
+  border: 1px solid var(--amazon-border);
+}
+
+.btn--secondary:hover {
+  background: var(--color-bg-1);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .product-detail,
+  .cart-container,
+  .account-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .cart-summary {
+    position: static;
+  }
+}
+
+@media (max-width: 768px) {
+  .header-container {
+    flex-direction: column;
+    gap: var(--space-12);
+    padding: var(--space-12) var(--space-16);
+  }
+  
+  .search-section {
+    order: 2;
+    max-width: none;
+    width: 100%;
+  }
+  
+  .user-actions {
+    order: 1;
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .delivery-location {
+    display: none;
+  }
+  
+  .nav-container {
+    flex-wrap: wrap;
+    gap: var(--space-12);
+  }
+  
+  .categories-grid,
+  .products-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-16);
+  }
+  
+  .footer-secondary {
+    flex-direction: column;
+    gap: var(--space-16);
+  }
+  
+  .footer-links {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .categories-grid,
+  .products-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .search-section {
+    flex-direction: column;
+  }
+  
+  .search-category {
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  }
+  
+  .search-btn {
+    border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+  }
+  
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Utility Classes */
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.visible {
+  display: block !important;
+}
+
+.loading {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.success-message {
+  background: rgba(var(--color-success-rgb), 0.1);
+  border: 1px solid var(--color-success);
+  color: var(--color-success);
+  padding: var(--space-12);
+  border-radius: var(--radius-base);
+  margin-bottom: var(--space-16);
+}
+
+.error-message {
+  background: rgba(var(--color-error-rgb), 0.1);
+  border: 1px solid var(--color-error);
+  color: var(--color-error);
+  padding: var(--space-12);
+  border-radius: var(--radius-base);
+  margin-bottom: var(--space-16);
+}
+</style>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <!-- Logo -->
+            <div class="logo" onclick="navigateTo('home')">
+                <h1>AmazonClone</h1>
+                <span class="logo-tagline">.in</span>
+            </div>
+            
+            <!-- Delivery Location -->
+            <div class="delivery-location">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                </svg>
+                <div>
+                    <span class="deliver-to">Deliver to</span>
+                    <strong>Bangalore 560001</strong>
+                </div>
+            </div>
+            
+            <!-- Search Bar -->
+            <div class="search-section">
+                <select class="search-category" id="searchCategory">
+                    <option value="all">All Categories</option>
+                    <option value="electronics">Electronics</option>
+                    <option value="fashion">Fashion</option>
+                    <option value="home">Home & Kitchen</option>
+                    <option value="books">Books</option>
+                    <option value="sports">Sports & Fitness</option>
+                    <option value="beauty">Beauty & Personal Care</option>
+                </select>
+                <input type="text" class="search-input" id="searchInput" placeholder="Search for products, brands and more...">
+                <button class="search-btn" id="searchBtn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- User Actions -->
+            <div class="user-actions">
+                <div class="language-selector">
+                    <span>EN</span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+                    </svg>
+                </div>
+                
+                <div class="account" onclick="navigateTo('account')">
+                    <span>Hello, <span id="userName">Sign in</span></span>
+                    <strong>Account & Lists</strong>
+                </div>
+                
+                <div class="orders" onclick="navigateTo('orders')">
+                    <span>Returns</span>
+                    <strong>& Orders</strong>
+                </div>
+                
+                <div class="cart" id="cartIcon" onclick="navigateTo('cart')">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M7 18c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12L8.1 13h7.45c.75 0 1.41-.41 1.75-1.03L21.7 4H5.21l-.94-2H1zm16 16c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+                    </svg>
+                    <span class="cart-count" id="cartCount">0</span>
+                    <span>Cart</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Navigation -->
+        <nav class="nav">
+            <div class="nav-container">
+                <button class="nav-menu-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                    All
+                </button>
+                <a href="#" class="nav-link" onclick="navigateTo('deals')">Today's Deals</a>
+                <a href="#" class="nav-link" onclick="navigateTo('category', 'electronics')">Electronics</a>
+                <a href="#" class="nav-link" onclick="navigateTo('category', 'fashion')">Fashion</a>
+                <a href="#" class="nav-link" onclick="navigateTo('category', 'home')">Home & Kitchen</a>
+                <a href="#" class="nav-link" onclick="navigateTo('category', 'books')">Books</a>
+                <a href="#" class="nav-link" onclick="navigateTo('category', 'sports')">Sports</a>
+                <a href="#" class="nav-link" onclick="navigateTo('category', 'beauty')">Beauty</a>
+                <a href="#" class="nav-link" onclick="navigateTo('sell')">Sell</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Breadcrumbs -->
+    <div class="breadcrumbs" id="breadcrumbs">
+        <!-- Breadcrumbs will be populated by JavaScript -->
+    </div>
+
+    <!-- Main Content Area -->
+    <main class="main-content" id="mainContent">
+        <!-- Content will be dynamically loaded here -->
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-back-to-top">
+            <button onclick="scrollToTop()" class="back-to-top-btn">Back to top</button>
+        </div>
+        
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h4>Get to Know Us</h4>
+                    <ul>
+                        <li><a href="#" onclick="navigateTo('about')">About AmazonClone</a></li>
+                        <li><a href="#" onclick="navigateTo('careers')">Careers</a></li>
+                        <li><a href="#" onclick="navigateTo('press')">Press Releases</a></li>
+                        <li><a href="#" onclick="navigateTo('investors')">Investor Relations</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Make Money with Us</h4>
+                    <ul>
+                        <li><a href="#" onclick="navigateTo('sell')">Sell products on AmazonClone</a></li>
+                        <li><a href="#" onclick="navigateTo('affiliate')">Become an Affiliate</a></li>
+                        <li><a href="#" onclick="navigateTo('advertise')">Advertise Your Products</a></li>
+                        <li><a href="#" onclick="navigateTo('publish')">Self-Publish with Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Customer Service</h4>
+                    <ul>
+                        <li><a href="#" onclick="navigateTo('help')">Help & Customer Service</a></li>
+                        <li><a href="#" onclick="navigateTo('orders')">Your Orders</a></li>
+                        <li><a href="#" onclick="navigateTo('track')">Track Your Order</a></li>
+                        <li><a href="#" onclick="navigateTo('returns')">Returns & Replacements</a></li>
+                        <li><a href="#" onclick="navigateTo('contact')">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>AmazonClone Payment Products</h4>
+                    <ul>
+                        <li><a href="#" onclick="navigateTo('payment-methods')">Payment Methods</a></li>
+                        <li><a href="#" onclick="navigateTo('gift-cards')">Gift Cards</a></li>
+                        <li><a href="#" onclick="navigateTo('top-up')">Mobile Top-up</a></li>
+                        <li><a href="#" onclick="navigateTo('rewards')">Rewards Program</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-divider"></div>
+            
+            <div class="footer-secondary">
+                <div class="footer-logo">
+                    <h2>AmazonClone</h2>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-language">
+                        <select class="form-control">
+                            <option>English</option>
+                            <option>Hindi</option>
+                            <option>Tamil</option>
+                        </select>
+                    </div>
+                    <div class="footer-currency">
+                        <span>₹ INR - Indian Rupee</span>
+                    </div>
+                    <div class="footer-country">
+                        <span>🇮🇳 India</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-bottom-links">
+                    <a href="#" onclick="navigateTo('conditions')">Conditions of Use</a>
+                    <a href="#" onclick="navigateTo('privacy')">Privacy Notice</a>
+                    <a href="#" onclick="navigateTo('interest-ads')">Interest-Based Ads</a>
+                    <a href="#" onclick="navigateTo('shipping')">Shipping Policy</a>
+                    <a href="#" onclick="navigateTo('return-policy')">Return Policy</a>
+                </div>
+                <p>&copy; 2025 AmazonClone.in. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Loading Spinner -->
+    <div class="loading-spinner" id="loadingSpinner">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Modals -->
+    <div class="modal hidden" id="authModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="authModalTitle">Sign In</h3>
+                <button class="modal-close" onclick="closeModal('authModal')">×</button>
+            </div>
+            <div class="modal-body" id="authModalBody">
+                <!-- Auth form will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Application Data with Indian Pricing
+const appData = {
+  categories: [
+    {
+      id: "electronics",
+      name: "Electronics",
+      image: "https://images.unsplash.com/photo-1498049794561-7780e7231661?w=300&h=200&fit=crop",
+      items: 12500,
+      subcategories: ["Mobile Phones", "Laptops", "Headphones", "Cameras", "Gaming", "Smart Home"]
+    },
+    {
+      id: "fashion",
+      name: "Fashion",
+      image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=300&h=200&fit=crop",
+      items: 8900,
+      subcategories: ["Men's Clothing", "Women's Clothing", "Shoes", "Accessories", "Watches", "Jewelry"]
+    },
+    {
+      id: "home",
+      name: "Home & Kitchen",
+      image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=300&h=200&fit=crop",
+      items: 15600,
+      subcategories: ["Kitchen Appliances", "Home Decor", "Furniture", "Bedding", "Storage", "Garden"]
+    },
+    {
+      id: "books",
+      name: "Books",
+      image: "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=300&h=200&fit=crop",
+      items: 21300,
+      subcategories: ["Fiction", "Non-Fiction", "Textbooks", "Children's Books", "Comics", "Audiobooks"]
+    },
+    {
+      id: "sports",
+      name: "Sports & Fitness",
+      image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=300&h=200&fit=crop",
+      items: 7800,
+      subcategories: ["Fitness Equipment", "Sports Gear", "Outdoor Activities", "Nutrition", "Yoga", "Team Sports"]
+    },
+    {
+      id: "beauty",
+      name: "Beauty & Personal Care",
+      image: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=300&h=200&fit=crop",
+      items: 9400,
+      subcategories: ["Skincare", "Makeup", "Hair Care", "Fragrances", "Personal Care", "Men's Grooming"]
+    }
+  ],
+  
+  products: [
+    {
+      id: 1,
+      name: "iPhone 15 Pro Max",
+      price: 134900,
+      originalPrice: 149900,
+      rating: 4.5,
+      reviews: 2840,
+      image: "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=400&h=400&fit=crop",
+      category: "electronics",
+      subcategory: "Mobile Phones",
+      description: "Latest iPhone with advanced camera system and A17 Pro chip. Experience the ultimate in mobile technology with stunning display and all-day battery life.",
+      features: ["6.7-inch Super Retina XDR display", "48MP Pro camera system", "A17 Pro chip", "USB-C connectivity", "Action Button", "Titanium design"],
+      inStock: true,
+      fastDelivery: true,
+      brand: "Apple"
+    },
+    {
+      id: 2,
+      name: "MacBook Air M2 13-inch",
+      price: 114900,
+      originalPrice: 129900,
+      rating: 4.7,
+      reviews: 1520,
+      image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=400&h=400&fit=crop",
+      category: "electronics",
+      subcategory: "Laptops",
+      description: "Supercharged by M2 chip, the redesigned MacBook Air is more portable than ever and delivers exceptional performance in an ultralight design.",
+      features: ["13.6-inch Liquid Retina display", "M2 chip with 8-core CPU", "18-hour battery life", "1080p FaceTime HD camera", "MagSafe charging", "Two Thunderbolt ports"],
+      inStock: true,
+      fastDelivery: true,
+      brand: "Apple"
+    },
+    {
+      id: 3,
+      name: "Sony WH-1000XM5 Wireless Headphones",
+      price: 29990,
+      originalPrice: 34990,
+      rating: 4.8,
+      reviews: 3650,
+      image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=400&fit=crop",
+      category: "electronics",
+      subcategory: "Headphones",
+      description: "Industry-leading noise canceling with new Auto NC Optimizer, exceptional sound quality, and crystal clear hands-free calling.",
+      features: ["30-hour battery life", "Multipoint connection", "Speak-to-Chat technology", "Premium comfort", "Quick Charge", "Touch controls"],
+      inStock: true,
+      fastDelivery: false,
+      brand: "Sony"
+    },
+    {
+      id: 4,
+      name: "Samsung 55-inch 4K Smart TV",
+      price: 54900,
+      originalPrice: 69900,
+      rating: 4.4,
+      reviews: 2180,
+      image: "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=400&h=400&fit=crop",
+      category: "electronics",
+      subcategory: "Smart Home",
+      description: "Crystal clear 4K resolution with HDR support, smart features, and seamless connectivity for the ultimate viewing experience.",
+      features: ["4K Ultra HD resolution", "HDR10+ support", "Smart TV with Tizen OS", "Multiple HDMI ports", "Voice control", "Built-in WiFi"],
+      inStock: true,
+      fastDelivery: true,
+      brand: "Samsung"
+    },
+    {
+      id: 5,
+      name: "Men's Cotton Casual Shirt",
+      price: 1299,
+      originalPrice: 1899,
+      rating: 4.2,
+      reviews: 890,
+      image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=400&fit=crop",
+      category: "fashion",
+      subcategory: "Men's Clothing",
+      description: "Premium quality cotton casual shirt perfect for everyday wear. Comfortable fit with stylish design.",
+      features: ["100% Cotton fabric", "Regular fit", "Machine washable", "Available in multiple colors", "Wrinkle resistant"],
+      inStock: true,
+      fastDelivery: true,
+      brand: "FashionHub"
+    },
+    {
+      id: 6,
+      name: "Women's Ethnic Kurta Set",
+      price: 2499,
+      originalPrice: 3999,
+      rating: 4.6,
+      reviews: 1240,
+      image: "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=400&h=400&fit=crop",
+      category: "fashion",
+      subcategory: "Women's Clothing",
+      description: "Beautiful ethnic kurta set with dupatta. Perfect for festivals and special occasions.",
+      features: ["Pure cotton material", "Includes kurta, palazzo & dupatta", "Hand block print", "Comfortable fit", "Easy care"],
+      inStock: true,
+      fastDelivery: false,
+      brand: "EthnicWear"
+    },
+    {
+      id: 7,
+      name: "Smart Fitness Watch",
+      price: 12999,
+      originalPrice: 16999,
+      rating: 4.3,
+      reviews: 1850,
+      image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=400&fit=crop",
+      category: "sports",
+      subcategory: "Fitness Equipment",
+      description: "Advanced fitness tracking with heart rate monitoring, GPS, and 7-day battery life.",
+      features: ["Heart rate monitoring", "GPS tracking", "7-day battery life", "Water resistant", "Sleep tracking", "Multiple sports modes"],
+      inStock: true,
+      fastDelivery: true,
+      brand: "FitTech"
+    },
+    {
+      id: 8,
+      name: "Premium Skincare Set",
+      price: 3499,
+      originalPrice: 4999,
+      rating: 4.7,
+      reviews: 920,
+      image: "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400&h=400&fit=crop",
+      category: "beauty",
+      subcategory: "Skincare",
+      description: "Complete skincare routine with cleanser, toner, serum, and moisturizer for glowing skin.",
+      features: ["All skin types", "Natural ingredients", "Cruelty-free", "Dermatologist tested", "Travel-friendly sizes"],
+      inStock: true,
+      fastDelivery: true,
+      brand: "GlowCare"
+    }
+  ],
+
+  heroSlides: [
+    {
+      title: "Great Indian Festival",
+      subtitle: "Up to 80% off on Electronics & Fashion",
+      buttonText: "Shop Now",
+      image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200&h=400&fit=crop"
+    },
+    {
+      title: "Fashion Week Special",
+      subtitle: "New arrivals from top brands",
+      buttonText: "Explore Fashion", 
+      image: "https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=1200&h=400&fit=crop"
+    },
+    {
+      title: "Home Makeover Sale",
+      subtitle: "Transform your living space",
+      buttonText: "Shop Home",
+      image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=1200&h=400&fit=crop"
+    }
+  ],
+
+  userAccount: {
+    isLoggedIn: false,
+    name: "Guest",
+    email: "",
+    orders: [
+      {
+        id: "AMZ123456",
+        date: "2025-01-25",
+        status: "Delivered",
+        total: 29990,
+        items: ["Sony WH-1000XM5 Wireless Headphones"],
+        estimatedDelivery: "2025-01-28"
+      },
+      {
+        id: "AMZ123457", 
+        date: "2025-01-20",
+        status: "In Transit",
+        total: 114900,
+        items: ["MacBook Air M2 13-inch"],
+        estimatedDelivery: "2025-01-30"
+      }
+    ],
+    addresses: [
+      {
+        id: 1,
+        name: "John Doe",
+        address: "123 MG Road, Bangalore, Karnataka 560001",
+        phone: "+91 9876543210",
+        default: true
+      }
+    ],
+    wishlist: [],
+    paymentMethods: [
+      {
+        id: 1,
+        type: "Credit Card",
+        last4: "1234",
+        brand: "Visa",
+        default: true
+      }
+    ]
+  }
+};
+
+// Global State
+let currentPage = 'home';
+let currentCategory = null;
+let currentProduct = null;
+let cart = [];
+let searchResults = [];
+let currentSlide = 0;
+
+// Router System
+class Router {
+  constructor() {
+    this.routes = {};
+    this.setupEventListeners();
+  }
+
+  addRoute(path, handler) {
+    this.routes[path] = handler;
+  }
+
+  setupEventListeners() {
+    window.addEventListener('popstate', () => {
+      this.handleRoute();
+    });
+  }
+
+  navigateTo(path, data = null) {
+    const url = data ? `#/${path}/${data}` : `#/${path}`;
+    window.history.pushState({ path, data }, '', url);
+    this.handleRoute();
+  }
+
+  handleRoute() {
+    const hash = window.location.hash.slice(2); // Remove #/
+    const [path, ...params] = hash.split('/');
+    
+    if (this.routes[path] || path === '') {
+      const handler = this.routes[path] || this.routes['home'];
+      handler(params);
+    } else {
+      this.routes['404']();
+    }
+  }
+}
+
+const router = new Router();
+
+// Utility Functions
+function formatPrice(price) {
+  return `₹${price.toLocaleString('en-IN')}`;
+}
+
+function formatNumber(num) {
+  return num.toLocaleString('en-IN');
+}
+
+function generateStars(rating) {
+  const fullStars = Math.floor(rating);
+  const hasHalfStar = rating % 1 !== 0;
+  let starsHtml = '';
+  
+  for (let i = 0; i < 5; i++) {
+    if (i < fullStars) {
+      starsHtml += '<span class="star">★</span>';
+    } else if (i === fullStars && hasHalfStar) {
+      starsHtml += '<span class="star">★</span>';
+    } else {
+      starsHtml += '<span class="star empty">★</span>';
+    }
+  }
+  
+  return starsHtml;
+}
+
+function calculateDiscount(originalPrice, currentPrice) {
+  return Math.round(((originalPrice - currentPrice) / originalPrice) * 100);
+}
+
+function showLoading() {
+  document.getElementById('loadingSpinner').classList.add('show');
+}
+
+function hideLoading() {
+  document.getElementById('loadingSpinner').classList.remove('show');
+}
+
+function updateBreadcrumbs(items) {
+  const breadcrumbsEl = document.getElementById('breadcrumbs');
+  
+  if (items.length === 0) {
+    breadcrumbsEl.style.display = 'none';
+    return;
+  }
+  
+  breadcrumbsEl.style.display = 'block';
+  
+  const breadcrumbsHtml = `
+    <div class="container">
+      ${items.map((item, index) => {
+        const isLast = index === items.length - 1;
+        return `
+          ${index > 0 ? '<span class="breadcrumb-separator">›</span>' : ''}
+          ${isLast ? 
+            `<span>${item.text}</span>` : 
+            `<a href="#" class="breadcrumb-link" onclick="event.preventDefault(); navigateTo('${item.path}')">${item.text}</a>`
+          }
+        `;
+      }).join('')}
+    </div>
+  `;
+  
+  breadcrumbsEl.innerHTML = breadcrumbsHtml;
+}
+
+// Navigation Function
+function navigateTo(page, data = null) {
+  event?.preventDefault();
+  router.navigateTo(page, data);
+}
+
+// Page Renderers
+function renderHomePage() {
+  currentPage = 'home';
+  updateBreadcrumbs([]);
+  
+  const content = `
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-slider" id="heroSlider">
+        ${appData.heroSlides.map((slide, index) => `
+          <div class="hero-slide ${index === 0 ? 'active' : ''}">
+            <img src="${slide.image}" alt="${slide.title}" loading="lazy">
+            <div class="hero-content">
+              <h2>${slide.title}</h2>
+              <p>${slide.subtitle}</p>
+              <button class="btn btn--primary btn--lg" onclick="navigateTo('deals')">${slide.buttonText}</button>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+      <div class="hero-indicators">
+        ${appData.heroSlides.map((_, index) => `
+          <button class="hero-indicator ${index === 0 ? 'active' : ''}" onclick="setSlide(${index})"></button>
+        `).join('')}
+      </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories-section">
+      <div class="page-container">
+        <h2 class="text-center" style="margin-bottom: 2rem;">Shop by Category</h2>
+        <div class="categories-grid">
+          ${appData.categories.map(category => `
+            <div class="category-card" onclick="navigateTo('category', '${category.id}')">
+              <img src="${category.image}" alt="${category.name}" loading="lazy">
+              <div class="category-info">
+                <h3>${category.name}</h3>
+                <p>${formatNumber(category.items)} items</p>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="products-section">
+      <div class="page-container">
+        <h2 class="text-center" style="margin-bottom: 2rem;">Featured Products</h2>
+        <div class="products-grid">
+          ${appData.products.slice(0, 6).map(product => renderProductCard(product)).join('')}
+        </div>
+      </div>
+    </section>
+
+    <!-- Deals Section -->
+    <section class="products-section" style="background-color: var(--color-bg-2);">
+      <div class="page-container">
+        <h2 class="text-center" style="margin-bottom: 2rem;">Today's Best Deals</h2>
+        <div class="products-grid">
+          ${appData.products.filter(p => p.originalPrice > p.price).map(product => renderProductCard(product)).join('')}
+        </div>
+      </div>
+    </section>
+  `;
+  
+  document.getElementById('mainContent').innerHTML = content;
+  initHeroSlider();
+}
+
+function renderProductCard(product) {
+  const discount = product.originalPrice ? calculateDiscount(product.originalPrice, product.price) : 0;
+  
+  return `
+    <div class="product-card" onclick="navigateTo('product', '${product.id}')">
+      <img src="${product.image}" alt="${product.name}" loading="lazy">
+      <div class="product-info">
+        <h3>${product.name}</h3>
+        <div class="product-rating">
+          <div class="stars">${generateStars(product.rating)}</div>
+          <span class="reviews">(${formatNumber(product.reviews)})</span>
+        </div>
+        <div class="product-price">
+          <span class="current-price">${formatPrice(product.price)}</span>
+          ${product.originalPrice ? `
+            <span class="original-price">${formatPrice(product.originalPrice)}</span>
+            <span class="discount">-${discount}%</span>
+          ` : ''}
+        </div>
+        <button class="add-to-cart" onclick="event.stopPropagation(); addToCart(${product.id})">
+          Add to Cart
+        </button>
+      </div>
+    </div>
+  `;
+}
+
+function renderCategoryPage(categoryId) {
+  const category = appData.categories.find(c => c.id === categoryId);
+  if (!category) {
+    renderNotFoundPage();
+    return;
+  }
+  
+  currentPage = 'category';
+  currentCategory = categoryId;
+  updateBreadcrumbs([
+    { text: 'Home', path: 'home' },
+    { text: category.name, path: `category` }
+  ]);
+  
+  const categoryProducts = appData.products.filter(p => p.category === categoryId);
+  
+  const content = `
+    <div class="page-container">
+      <div class="page-header">
+        <h1>${category.name}</h1>
+        <p>Discover ${formatNumber(category.items)} products in ${category.name}</p>
+      </div>
+      
+      <div class="categories-grid" style="margin-bottom: 2rem;">
+        ${category.subcategories.map(sub => `
+          <div class="category-card">
+            <div class="category-info" style="text-align: center; padding: 2rem;">
+              <h3>${sub}</h3>
+              <p>Browse ${sub}</p>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+      
+      <h2>Popular Products in ${category.name}</h2>
+      <div class="products-grid">
+        ${categoryProducts.length > 0 ? 
+          categoryProducts.map(product => renderProductCard(product)).join('') :
+          '<div class="text-center" style="grid-column: 1/-1; padding: 2rem;"><p>No products available in this category currently. Check back soon!</p></div>'
+        }
+      </div>
+    </div>
+  `;
+  
+  document.getElementById('mainContent').innerHTML = content;
+}
+
+function renderSearchPage(query) {
+  const decodedQuery = decodeURIComponent(query);
+  currentPage = 'search';
+  updateBreadcrumbs([
+    { text: 'Home', path: 'home' },
+    { text: `Search: "${decodedQuery}"`, path: 'search' }
+  ]);
+
+  const results = appData.products.filter(product =>
+    product.name.toLowerCase().includes(decodedQuery.toLowerCase()) ||
+    product.description.toLowerCase().includes(decodedQuery.toLowerCase()) ||
+    product.category.toLowerCase().includes(decodedQuery.toLowerCase()) ||
+    product.brand.toLowerCase().includes(decodedQuery.toLowerCase())
+  );
+
+  const content = `
+    <div class="page-container">
+      <div class="page-header">
+        <h1>Search Results for "${decodedQuery}"</h1>
+        <p>${results.length} ${results.length === 1 ? 'result' : 'results'} found</p>
+      </div>
+      
+      ${results.length > 0 ? `
+        <div class="products-grid">
+          ${results.map(product => renderProductCard(product)).join('')}
+        </div>
+      ` : `
+        <div class="text-center" style="padding: 3rem;">
+          <h3>No results found for "${decodedQuery}"</h3>
+          <p>Try different keywords or browse our categories</p>
+          <button class="btn btn--primary" onclick="navigateTo('home')">Continue Shopping</button>
+        </div>
+      `}
+    </div>
+  `;
+
+  document.getElementById('mainContent').innerHTML = content;
+}
+
+function renderProductDetailPage(productId) {
+  const product = appData.products.find(p => p.id == productId);
+  if (!product) {
+    renderNotFoundPage();
+    return;
+  }
+  
+  currentPage = 'product';
+  currentProduct = product;
+  
+  const category = appData.categories.find(c => c.id === product.category);
+  updateBreadcrumbs([
+    { text: 'Home', path: 'home' },
+    { text: category?.name || 'Category', path: `category/${product.category}` },
+    { text: product.name, path: `product` }
+  ]);
+  
+  const discount = product.originalPrice ? calculateDiscount(product.originalPrice, product.price) : 0;
+  
+  const content = `
+    <div class="page-container">
+      <div class="product-detail">
+        <div class="product-images">
+          <div class="product-main-image">
+            <img src="${product.image}" alt="${product.name}">
+          </div>
+        </div>
+        
+        <div class="product-details">
+          <h1>${product.name}</h1>
+          <div class="product-rating">
+            <div class="stars">${generateStars(product.rating)}</div>
+            <span class="reviews">(${formatNumber(product.reviews)} reviews)</span>
+          </div>
+          
+          <div class="product-price" style="margin: 1rem 0;">
+            <span class="current-price" style="font-size: 2rem;">${formatPrice(product.price)}</span>
+            ${product.originalPrice ? `
+              <span class="original-price">${formatPrice(product.originalPrice)}</span>
+              <span class="discount">-${discount}%</span>
+            ` : ''}
+          </div>
+          
+          <p style="color: var(--color-text-secondary); margin-bottom: 1.5rem;">
+            ${product.description}
+          </p>
+          
+          <div class="product-features">
+            <h3>Key Features:</h3>
+            <ul>
+              ${product.features.map(feature => `<li>${feature}</li>`).join('')}
+            </ul>
+          </div>
+          
+          <div style="margin-top: 2rem;">
+            <div class="quantity-selector" style="margin-bottom: 1rem;">
+              <button class="quantity-btn" onclick="changeQuantity(-1)">-</button>
+              <input type="number" class="quantity-input" id="productQuantity" value="1" min="1" max="10" readonly>
+              <button class="quantity-btn" onclick="changeQuantity(1)">+</button>
+            </div>
+            
+            <button class="btn btn--primary btn--lg" onclick="addToCart(${product.id})" style="margin-right: 1rem;">
+              Add to Cart
+            </button>
+            <button class="btn btn--secondary btn--lg" onclick="addToWishlist(${product.id})">
+              Add to Wishlist
+            </button>
+          </div>
+          
+          <div style="margin-top: 2rem; padding: 1rem; background: var(--color-bg-1); border-radius: var(--radius-base);">
+            <p><strong>Brand:</strong> ${product.brand}</p>
+            <p><strong>In Stock:</strong> ${product.inStock ? 'Yes' : 'No'}</p>
+            <p><strong>Fast Delivery:</strong> ${product.fastDelivery ? 'Available' : 'Standard delivery'}</p>
+          </div>
+        </div>
+      </div>
+      
+      <div style="margin-top: 3rem;">
+        <h2>Related Products</h2>
+        <div class="products-grid">
+          ${appData.products
+            .filter(p => p.category === product.category && p.id !== product.id)
+            .slice(0, 4)
+            .map(p => renderProductCard(p)).join('')}
+        </div>
+      </div>
+    </div>
+  `;
+  
+  document.getElementById('mainContent').innerHTML = content;
+}
+
+function renderCartPage() {
+  currentPage = 'cart';
+  updateBreadcrumbs([
+    { text: 'Home', path: 'home' },
+    { text: 'Shopping Cart', path: 'cart' }
+  ]);
+  
+  if (cart.length === 0) {
+    const content = `
+      <div class="page-container text-center">
+        <h1>Your Cart is Empty</h1>
+        <p style="margin: 2rem 0;">Looks like you haven't added any items to your cart yet.</p>
+        <button class="btn btn--primary btn--lg" onclick="navigateTo('home')">
+          Continue Shopping
+        </button>
+      </div>
+    `;
+    document.getElementById('mainContent').innerHTML = content;
+    return;
+  }
+  
+  const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+  const shipping = subtotal > 50000 ? 0 : 500;
+  const total = subtotal + shipping;
+  
+  const content = `
+    <div class="page-container">
+      <h1>Shopping Cart</h1>
+      <div class="cart-container">
+        <div class="cart-items">
+          <h2>Cart Items (${cart.reduce((sum, item) => sum + item.quantity, 0)})</h2>
+          ${cart.map((item, index) => `
+            <div class="cart-item">
+              <img src="${item.image}" alt="${item.name}">
+              <div class="cart-item-details">
+                <h3>${item.name}</h3>
+                <p>Price: ${formatPrice(item.price)}</p>
+                <div class="cart-item-actions">
+                  <div class="quantity-selector">
+                    <button class="quantity-btn" onclick="updateCartQuantity(${index}, ${item.quantity - 1})">-</button>
+                    <span class="quantity-input">${item.quantity}</span>
+                    <button class="quantity-btn" onclick="updateCartQuantity(${index}, ${item.quantity + 1})">+</button>
+                  </div>
+                  <button class="btn btn--secondary" onclick="removeFromCart(${index})">Remove</button>
+                </div>
+              </div>
+              <div class="cart-item-total">
+                <strong>${formatPrice(item.price * item.quantity)}</strong>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+        
+        <div class="cart-summary">
+          <h3>Order Summary</h3>
+          <div style="margin: 1rem 0;">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+              <span>Subtotal:</span>
+              <span>${formatPrice(subtotal)}</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+              <span>Shipping:</span>
+              <span>${shipping === 0 ? 'FREE' : formatPrice(shipping)}</span>
+            </div>
+            <hr>
+            <div style="display: flex; justify-content: space-between; font-weight: bold; font-size: 1.2rem;">
+              <span>Total:</span>
+              <span>${formatPrice(total)}</span>
+            </div>
+          </div>
+          
+          <button class="btn btn--primary btn--full-width" onclick="navigateTo('checkout')">
+            Proceed to Checkout
+          </button>
+          
+          ${shipping > 0 ? `
+            <p style="font-size: 0.9rem; color: var(--color-text-secondary); margin-top: 1rem;">
+              Add ₹${(50000 - subtotal).toLocaleString('en-IN')} more for FREE shipping
+            </p>
+          ` : ''}
+        </div>
+      </div>
+    </div>
+  `;
+  
+  document.getElementById('mainContent').innerHTML = content;
+}
+
+function renderAccountPage() {
+  currentPage = 'account';
+  updateBreadcrumbs([
+    { text: 'Home', path: 'home' },
+    { text: 'Your Account', path: 'account' }
+  ]);
+  
+  if (!appData.userAccount.isLoggedIn) {
+    renderSignInPage();
+    return;
+  }
+  
+  const content = `
+    <div class="page-container">
+      <div class="account-container">
+        <div class="account-sidebar">
+          <h3>Your Account</h3>
+          <ul class="account-menu">
+            <li><a href="#" onclick="navigateTo('account')" class="active">Dashboard</a></li>
+            <li><a href="#" onclick="navigateTo('orders')">Your Orders</a></li>
+            <li><a href="#" onclick="navigateTo('wishlist')">Your Wishlist</a></li>
+            <li><a href="#" onclick="navigateTo('addresses')">Manage Addresses</a></li>
+            <li><a href="#" onclick="navigateTo('payment-methods')">Payment Methods</a></li>
+            <li><a href="#" onclick="signOut()">Sign Out</a></li>
+          </ul>
+        </div>
+        
+        <div class="account-content">
+          <h1>Hello, ${appData.userAccount.name}</h1>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem;">
+            <div class="card">
+              <div class="card__body">
+                <h3>Your Orders</h3>
+                <p>Track, return, or buy things again</p>
+                <button class="btn btn--primary" onclick="navigateTo('orders')">View Orders</button>
+              </div>
+            </div>
+            
+            <div class="card">
+              <div class="card__body">
+                <h3>Your Addresses</h3>
+                <p>Edit addresses for orders and gifts</p>
+                <button class="btn btn--primary" onclick="navigateTo('addresses')">Manage Addresses</button>
+              </div>
+            </div>
+            
+            <div class="card">
+              <div class="card__body">
+                <h3>Your Wishlist</h3>
+                <p>View saved items and move to cart</p>
+                <button class="btn btn--primary" onclick="navigateTo('wishlist')">View Wishlist</button>
+              </div>
+            </div>
+            
+            <div class="card">
+              <div class="card__body">
+                <h3>Payment Methods</h3>
+                <p>Add or remove payment methods</p>
+                <button class="btn btn--primary" onclick="navigateTo('payment-methods')">Manage Payments</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+  
+  document.getElementById('mainContent').innerHTML = content;
+}
+
+function renderSignInPage() {
+  const content = `
+    <div class="page-container">
+      <div class="form-section" style="max-width: 400px; margin: 2rem auto;">
+        <h1 class="text-center">Sign In</h1>
+        <form onsubmit="handleSignIn(event)">
+          <div class="form-group">
+            <label class="form-label">Email or Mobile Number</label>
+            <input type="text" class="form-control" id="signInEmail" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Password</label>
+            <input type="password" class="form-control" id="signInPassword" required>
+          </div>
+          <button type="submit" class="btn btn--primary btn--full-width">Sign In</button>
+        </form>
+        <div class="text-center" style="margin-top: 1rem;">
+          <p>New to AmazonClone? <a href="#" onclick="navigateTo('signup')">Create your account</a></p>
+        </div>
+      </div>
+    </div>
+  `;
+  
+  document.getElementById('mainContent').innerHTML = content;
+}
+
+// Function to render all the additional pages
+function renderGenericPage(pageTitle, pageDescription) {
+  const content = `
+    <div class="page-container">
+      <div class="page-header">
+        <h1>${pageTitle}</h1>
+        <p>${pageDescription}</p>
+      </div>
+      <div style="background: var(--color-surface); padding: 2rem; border-radius: var(--radius-lg); margin-top: 2rem;">
+        <p>Welcome to ${pageTitle}. This page contains detailed information about our ${pageTitle.toLowerCase()}.</p>
+        <p>We are committed to providing you with the best possible experience. If you have any questions or need assistance, please don't hesitate to contact our customer service team.</p>
+        <div style="margin-top: 2rem;">
+          <button class="btn btn--primary" onclick="navigateTo('home')">Back to Homepage</button>
+          <button class="btn btn--secondary" onclick="navigateTo('contact')" style="margin-left: 1rem;">Contact Support</button>
+        </div>
+      </div>
+    </div>
+  `;
+  
+  document.getElementById('mainContent').innerHTML = content;
+}
+
+// Initialize all route handlers
+function initRouter() {
+  router.addRoute('home', () => renderHomePage());
+  router.addRoute('', () => renderHomePage());
+  router.addRoute('category', (params) => renderCategoryPage(params[0]));
+  router.addRoute('product', (params) => renderProductDetailPage(params[0]));
+  router.addRoute('search', (params) => renderSearchPage(params[0]));
+  router.addRoute('cart', () => renderCartPage());
+  router.addRoute('account', () => renderAccountPage());
+  router.addRoute('signin', () => renderSignInPage());
+  
+  // All additional pages using generic renderer
+  router.addRoute('signup', () => {
+    updateBreadcrumbs([{ text: 'Home', path: 'home' }, { text: 'Create Account', path: 'signup' }]);
+    renderGenericPage('Create Account', 'Join AmazonClone for exclusive deals and fast delivery');
+  });
+  
+  router.addRoute('orders', () => {
+    updateBreadcrumbs([{ text: 'Home', path: 'home' }, { text: 'Your Orders', path: 'orders' }]);
+    renderGenericPage('Your Orders', 'Track and manage all your orders');
+  });
+  
+  router.addRoute('wishlist', () => {
+    updateBreadcrumbs([{ text: 'Home', path: 'home' }, { text: 'Your Wishlist', path: 'wishlist' }]);
+    renderGenericPage('Your Wishlist', 'Items you\'ve saved for later');
+  });
+  
+  router.addRoute('checkout', () => {
+    updateBreadcrumbs([{ text: 'Home', path: 'home' }, { text: 'Cart', path: 'cart' }, { text: 'Checkout', path: 'checkout' }]);
+    renderGenericPage('Checkout', 'Review your order and complete purchase');
+  });
+  
+  router.addRoute('help', () => {
+    updateBreadcrumbs([{ text: 'Home', path: 'home' }, { text: 'Help & Customer Service', path: 'help' }]);
+    renderGenericPage('Help & Customer Service', 'Find answers to your questions and get support');
+  });
+  
+  router.addRoute('contact', () => {
+    updateBreadcrumbs([{ text: 'Home', path: 'home' }, { text: 'Contact Us', path: 'contact' }]);
+    renderGenericPage('Contact Us', 'Get in touch with our customer service team');
+  });
+  
+  router.addRoute('about', () => {
+    updateBreadcrumbs([{ text: 'Home', path: 'home' }, { text: 'About AmazonClone', path: 'about' }]);
+    renderGenericPage('About AmazonClone', 'Learn more about our company and mission');
+  });
+  
+  router.addRoute('careers', () => {
+    updateBreadcrumbs([{ text: 'Home', path: 'home' }, { text: 'Careers', path: 'careers' }]);
+    renderGenericPage('Careers at AmazonClone', 'Join our team and build the future of e-commerce');
+  });
+  
+  router.addRoute('sell', () => {
+    updateBreadcrumbs([{ text: 'Home', path: 'home' }, { text: 'Sell on AmazonClone', path: 'sell' }]);
+    renderGenericPage('Sell on AmazonClone', 'Start your business and reach millions of customers');
+  });
+  
+  router.addRoute('deals', () => {
+    updateBreadcrumbs([{ text: 'Home', path: 'home' }, { text: 'Today\'s Deals', path: 'deals' }]);
+    renderGenericPage('Today\'s Deals', 'Limited time offers and special discounts');
+  });
+  
+  router.addRoute('track', () => {
+    updateBreadcrumbs([{ text: 'Home', path: 'home' }, { text: 'Track Your Order', path: 'track' }]);
+    renderGenericPage('Track Your Order', 'Enter your order details to track delivery status');
+  });
+  
+  router.addRoute('returns', () => {
+    updateBreadcrumbs([{ text: 'Home', path: 'home' }, { text: 'Returns & Refunds', path: 'returns' }]);
+    renderGenericPage('Returns & Refunds', 'Easy returns and hassle-free refunds');
+  });
+  
+  router.addRoute('privacy', () => {
+    updateBreadcrumbs([{ text: 'Home', path: 'home' }, { text: 'Privacy Policy', path: 'privacy' }]);
+    renderGenericPage('Privacy Policy', 'How we collect, use, and protect your information');
+  });
+  
+  router.addRoute('conditions', () => {
+    updateBreadcrumbs([{ text: 'Home', path: 'home' }, { text: 'Terms of Service', path: 'conditions' }]);
+    renderGenericPage('Terms of Service', 'Terms and conditions for using our platform');
+  });
+  
+  router.addRoute('shipping', () => {
+    updateBreadcrumbs([{ text: 'Home', path: 'home' }, { text: 'Shipping Policy', path: 'shipping' }]);
+    renderGenericPage('Shipping Policy', 'Delivery options and shipping information');
+  });
+  
+  router.addRoute('addresses', () => {
+    updateBreadcrumbs([{ text: 'Home', path: 'home' }, { text: 'Manage Addresses', path: 'addresses' }]);
+    renderGenericPage('Manage Addresses', 'Add, edit, or remove your delivery addresses');
+  });
+  
+  router.addRoute('payment-methods', () => {
+    updateBreadcrumbs([{ text: 'Home', path: 'home' }, { text: 'Payment Methods', path: 'payment-methods' }]);
+    renderGenericPage('Payment Methods', 'Manage your payment options and preferences');
+  });
+  
+  router.addRoute('gift-cards', () => {
+    updateBreadcrumbs([{ text: 'Home', path: 'home' }, { text: 'Gift Cards', path: 'gift-cards' }]);
+    renderGenericPage('Gift Cards', 'Purchase and redeem gift cards');
+  });
+  
+  router.addRoute('affiliate', () => {
+    updateBreadcrumbs([{ text: 'Home', path: 'home' }, { text: 'Affiliate Program', path: 'affiliate' }]);
+    renderGenericPage('Affiliate Program', 'Earn money by promoting our products');
+  });
+  
+  router.addRoute('advertise', () => {
+    updateBreadcrumbs([{ text: 'Home', path: 'home' }, { text: 'Advertise Your Products', path: 'advertise' }]);
+    renderGenericPage('Advertise Your Products', 'Promote your products to millions of customers');
+  });
+  
+  router.addRoute('404', () => {
+    updateBreadcrumbs([{ text: 'Home', path: 'home' }, { text: 'Page Not Found', path: '404' }]);
+    renderNotFoundPage();
+  });
+}
+
+// Core functionality
+function addToCart(productId) {
+  const product = appData.products.find(p => p.id == productId);
+  if (!product) return;
+  
+  const quantityInput = document.getElementById('productQuantity');
+  const quantity = quantityInput ? parseInt(quantityInput.value) : 1;
+  
+  const existingItemIndex = cart.findIndex(item => item.id === product.id);
+  
+  if (existingItemIndex !== -1) {
+    cart[existingItemIndex].quantity += quantity;
+  } else {
+    cart.push({ ...product, quantity });
+  }
+  
+  updateCartCount();
+  showNotification('Product added to cart!', 'success');
+}
+
+function addToWishlist(productId) {
+  showNotification('Product added to wishlist!', 'success');
+}
+
+function updateCartCount() {
+  const cartCount = document.getElementById('cartCount');
+  const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+  cartCount.textContent = totalItems;
+}
+
+function updateCartQuantity(index, newQuantity) {
+  if (newQuantity <= 0) {
+    removeFromCart(index);
+    return;
+  }
+  
+  cart[index].quantity = newQuantity;
+  updateCartCount();
+  renderCartPage();
+}
+
+function removeFromCart(index) {
+  cart.splice(index, 1);
+  updateCartCount();
+  renderCartPage();
+}
+
+function changeQuantity(change) {
+  const qtyInput = document.getElementById('productQuantity');
+  if (qtyInput) {
+    const currentQty = parseInt(qtyInput.value);
+    const newQty = Math.max(1, Math.min(10, currentQty + change));
+    qtyInput.value = newQty;
+  }
+}
+
+function setSlide(index) {
+  currentSlide = index;
+  const slides = document.querySelectorAll('.hero-slide');
+  const indicators = document.querySelectorAll('.hero-indicator');
+  
+  slides.forEach(slide => slide.classList.remove('active'));
+  indicators.forEach(indicator => indicator.classList.remove('active'));
+  
+  if (slides[index]) {
+    slides[index].classList.add('active');
+    indicators[index].classList.add('active');
+  }
+}
+
+function initHeroSlider() {
+  setInterval(() => {
+    const nextSlide = (currentSlide + 1) % appData.heroSlides.length;
+    setSlide(nextSlide);
+  }, 5000);
+}
+
+function handleSignIn(event) {
+  event.preventDefault();
+  const email = document.getElementById('signInEmail').value;
+  
+  appData.userAccount.isLoggedIn = true;
+  appData.userAccount.name = email.split('@')[0] || 'User';
+  appData.userAccount.email = email;
+  
+  document.getElementById('userName').textContent = appData.userAccount.name;
+  showNotification('Successfully signed in!', 'success');
+  navigateTo('account');
+}
+
+function signOut() {
+  appData.userAccount.isLoggedIn = false;
+  appData.userAccount.name = 'Guest';
+  appData.userAccount.email = '';
+  
+  document.getElementById('userName').textContent = 'Sign in';
+  showNotification('Successfully signed out!', 'success');
+  navigateTo('home');
+}
+
+function showNotification(message, type = 'info') {
+  const notification = document.createElement('div');
+  notification.className = `${type}-message`;
+  notification.textContent = message;
+  notification.style.cssText = `
+    position: fixed;
+    top: 100px;
+    right: 20px;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    z-index: 10000;
+    animation: slideIn 0.3s ease;
+  `;
+  
+  document.body.appendChild(notification);
+  
+  setTimeout(() => {
+    notification.remove();
+  }, 3000);
+}
+
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function renderNotFoundPage() {
+  document.getElementById('mainContent').innerHTML = `
+    <div class="page-container text-center">
+      <h1>404 - Page Not Found</h1>
+      <p>Sorry, the page you're looking for doesn't exist.</p>
+      <button class="btn btn--primary" onclick="navigateTo('home')">Go Home</button>
+    </div>
+  `;
+}
+
+function closeModal(modalId) {
+  document.getElementById(modalId).classList.add('hidden');
+}
+
+// Search functionality
+function initSearch() {
+  const searchBtn = document.getElementById('searchBtn');
+  const searchInput = document.getElementById('searchInput');
+  
+  function performSearch() {
+    const query = searchInput.value.trim();
+    if (query) {
+      navigateTo('search', encodeURIComponent(query));
+    }
+  }
+  
+  searchBtn.addEventListener('click', performSearch);
+  searchInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+      performSearch();
+    }
+  });
+}
+
+// Initialize application
+function init() {
+  console.log('Initializing AmazonClone application...');
+  
+  initRouter();
+  initSearch();
+  updateCartCount();
+  
+  // Handle initial route
+  if (window.location.hash) {
+    router.handleRoute();
+  } else {
+    renderHomePage();
+  }
+  
+  // Show app after initialization
+  document.body.style.opacity = '0';
+  setTimeout(() => {
+    document.body.style.transition = 'opacity 0.3s ease';
+    document.body.style.opacity = '1';
+  }, 100);
+  
+  console.log('AmazonClone application initialized successfully!');
+}
+
+// Start the application
+document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
