@@ -1485,16 +1485,17 @@ select.form-control {
 }
 
 .cart-items {
-  background: var(--color-surface);
-  border-radius: var(--radius-lg);
-  padding: var(--space-24);
+  background: white;
+  border: 1px solid var(--amazon-border);
+  border-radius: 0px;
+  padding: var(--space-20);
 }
 
 .cart-item {
   display: flex;
   gap: var(--space-16);
   padding: var(--space-16) 0;
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--amazon-border);
 }
 
 .cart-item:last-child {
@@ -1522,8 +1523,10 @@ select.form-control {
   display: flex;
   align-items: center;
   gap: var(--space-4);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
+  background: #F0F2F2;
+  border: 1px solid var(--amazon-border);
+  border-radius: 8px;
+  padding: var(--space-4) var(--space-8);
 }
 
 .quantity-btn {
@@ -1532,24 +1535,29 @@ select.form-control {
   padding: var(--space-4) var(--space-8);
   cursor: pointer;
   font-weight: var(--font-weight-bold);
+  color: var(--amazon-text-dark);
   transition: background-color var(--duration-fast) var(--ease-standard);
 }
 
 .quantity-btn:hover {
-  background-color: var(--color-secondary);
+  background-color: rgba(0,0,0,0.05);
+  border-radius: 3px;
 }
 
 .quantity-input {
   width: 50px;
   text-align: center;
   border: none;
+  background: transparent;
   padding: var(--space-4);
+  font-weight: 400;
 }
 
 .cart-summary {
-  background: var(--color-surface);
-  border-radius: var(--radius-lg);
-  padding: var(--space-24);
+  background: white;
+  border: 1px solid var(--amazon-border);
+  border-radius: 0px;
+  padding: var(--space-16);
   height: fit-content;
   position: sticky;
   top: 120px;
