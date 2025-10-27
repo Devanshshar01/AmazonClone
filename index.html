@@ -2671,11 +2671,17 @@ function renderHomePage() {
 
 function renderProductCard(product) {
   const discount = product.originalPrice ? calculateDiscount(product.originalPrice, product.price) : 0;
-  
+
   return `
     <div class="product-card" onclick="navigateTo('product', '${product.id}')">
-      <img src="${product.image}" alt="${product.name}" loading="lazy">
+      <div class="product-card-image-container">
+        ${product.originalPrice ? '<div class="badge-deal">Limited time deal</div>' : ''}
+        ${!product.originalPrice && product.bestseller ? '<div class="badge-bestseller">Best Seller</div>' : ''}
+        ${product.prime ? '<div class="badge-prime-overlay">prime</div>' : ''}
+        <img src="${product.image}" alt="${product.name}" loading="lazy">
+      </div>
       <div class="product-info">
+        ${product.sponsored ? '<div class="label-sponsored">Sponsored</div>' : ''}
         <h3>${product.name}</h3>
         <div class="product-rating">
           <div class="stars">${generateStars(product.rating)}</div>
@@ -2688,6 +2694,8 @@ function renderProductCard(product) {
             <span class="discount">-${discount}%</span>
           ` : ''}
         </div>
+        ${product.prime ? '<div class="badge-prime-text">prime</div>' : ''}
+        ${product.freeDelivery ? `<div class="delivery-info">FREE delivery ${product.deliveryDate}</div>` : ''}
         <button class="add-to-cart" onclick="event.stopPropagation(); addToCart(${product.id})">
           Add to Cart
         </button>
