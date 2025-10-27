@@ -1251,61 +1251,62 @@ select.form-control {
 
 .star {
   color: var(--amazon-orange);
-  font-size: var(--font-size-sm);
+  font-size: 13px;
+  letter-spacing: -1px;
 }
 
 .star.empty {
-  color: var(--color-border);
+  color: #d5d5d5;
 }
 
 .reviews {
-  color: var(--color-text-secondary);
-  font-size: var(--font-size-sm);
+  color: var(--amazon-link);
+  font-size: 12px;
 }
 
 .product-price {
   display: flex;
   align-items: center;
   gap: var(--space-8);
-  margin-bottom: var(--space-16);
+  margin-bottom: var(--space-12);
 }
 
 .current-price {
-  font-size: var(--font-size-xl);
-  font-weight: var(--font-weight-bold);
-  color: var(--color-text);
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--amazon-text-dark);
 }
 
 .original-price {
-  font-size: var(--font-size-base);
-  color: var(--color-text-secondary);
+  font-size: 12px;
+  color: var(--amazon-text-medium);
   text-decoration: line-through;
 }
 
 .discount {
-  background: var(--color-error);
-  color: var(--color-white);
-  padding: var(--space-2) var(--space-6);
-  border-radius: var(--radius-sm);
-  font-size: var(--font-size-xs);
-  font-weight: var(--font-weight-bold);
+  background: var(--amazon-deal-red);
+  color: white;
+  padding: 2px 6px;
+  border-radius: 2px;
+  font-size: 11px;
+  font-weight: 400;
 }
 
 .add-to-cart {
-  background: var(--amazon-orange);
-  color: var(--color-white);
-  border: none;
-  padding: var(--space-8) var(--space-16);
-  border-radius: var(--radius-base);
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-medium);
+  background: var(--amazon-yellow);
+  color: var(--amazon-text-dark);
+  border: 1px solid #FCD200;
+  padding: 8px var(--space-16);
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 400;
   cursor: pointer;
   width: 100%;
   transition: background-color var(--duration-fast) var(--ease-standard);
 }
 
 .add-to-cart:hover {
-  background: var(--amazon-orange-hover);
+  background: var(--amazon-yellow-hover);
 }
 
 /* Product Detail Page */
