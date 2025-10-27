@@ -1309,6 +1309,104 @@ select.form-control {
   background: var(--amazon-yellow-hover);
 }
 
+/* Amazon Badge Styles */
+.product-card-image-container {
+  position: relative;
+  width: 100%;
+}
+
+.badge-deal {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: var(--amazon-deal-red);
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 6px;
+  border-radius: 2px;
+  z-index: 10;
+}
+
+.badge-bestseller {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: var(--amazon-orange);
+  color: white;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 6px;
+  border-radius: 2px;
+  text-transform: uppercase;
+  z-index: 10;
+}
+
+.badge-prime-overlay {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: var(--amazon-prime-blue);
+  color: white;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 2px;
+  z-index: 10;
+}
+
+.label-sponsored {
+  color: var(--amazon-text-medium);
+  font-size: 11px;
+  font-weight: 400;
+  margin-bottom: 4px;
+}
+
+.badge-prime-text {
+  display: inline-block;
+  color: var(--amazon-prime-blue);
+  font-size: 12px;
+  font-weight: 700;
+  margin-top: 8px;
+  margin-bottom: 4px;
+}
+
+.delivery-info {
+  color: var(--amazon-success-green);
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.amazon-link {
+  color: var(--amazon-link);
+  text-decoration: none;
+}
+
+.amazon-link:hover {
+  color: var(--amazon-link-hover);
+  text-decoration: underline;
+}
+
+.price-currency {
+  font-size: 11px;
+  color: var(--amazon-text-dark);
+  vertical-align: top;
+  position: relative;
+  top: 2px;
+}
+
+.discount-badge {
+  display: inline-block;
+  background: var(--amazon-deal-red);
+  color: white;
+  border-radius: 2px;
+  padding: 2px 6px;
+  font-size: 11px;
+  font-weight: 400;
+  margin-left: 6px;
+}
+
 /* Product Detail Page */
 .product-detail {
   display: grid;
