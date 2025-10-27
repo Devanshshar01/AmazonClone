@@ -1200,34 +1200,41 @@ select.form-control {
 
 .product-card {
   background: var(--color-surface);
-  border-radius: var(--radius-lg);
+  border-radius: 0px;
   overflow: hidden;
-  box-shadow: var(--shadow-sm);
-  transition: transform var(--duration-normal) var(--ease-standard), box-shadow var(--duration-normal) var(--ease-standard);
+  border: 1px solid var(--amazon-border);
+  box-shadow: none;
+  transition: border-color var(--duration-normal) var(--ease-standard);
   position: relative;
   cursor: pointer;
 }
 
 .product-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
+  border-color: #888;
 }
 
 .product-card img {
   width: 100%;
-  height: 250px;
+  height: 200px;
   object-fit: cover;
+  border-bottom: 1px solid var(--amazon-border);
 }
 
 .product-info {
-  padding: var(--space-16);
+  padding: var(--space-12);
 }
 
 .product-info h3 {
-  font-size: var(--font-size-lg);
+  font-size: 14px;
   margin-bottom: var(--space-8);
-  color: var(--color-text);
-  line-height: var(--line-height-tight);
+  color: var(--amazon-link);
+  line-height: 1.4;
+  font-weight: 400;
+  transition: color var(--duration-fast);
+}
+
+.product-info h3:hover {
+  color: var(--amazon-link-hover);
 }
 
 .product-rating {
